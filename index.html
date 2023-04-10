@@ -3,9 +3,9 @@
 
 <head>
     <title>AmpNado</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='https://cdn.tailwindcss.com'></script>
     <script>
         tailwind.config = {
             theme: {
@@ -22,32 +22,33 @@
             },
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <script src="js/ats.js"></script>
+    <script src='https://code.jquery.com/jquery-3.6.4.min.js'
+        integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
+    <script src='/js/jquery.cookie.js'></script>
+    <script src='/js/initidx.js'></script>
+    <script src='/js/idx.js'></script>
     
 </head>
 
-<body class="bg-black"></body>
-    <main class="h-screen flex flex-col items-center justify-center mr-3 ml-3">
+<body class='bg-black'></body>
+    <main class='h-screen flex flex-col items-center justify-center mr-3 ml-3'>
 
-        <h1 class="mt-10 mb-10 text-center text-white text-5xl">Admin LogIn</h1>
-        <form class="mx-auto" method="get">
+        <h1 class='mt-10 mb-10 text-center text-white text-5xl'>Admin LogIn</h1>
+        <form class='mx-auto' method='get'>
 
-            <input id="tokenInput" aria-label="Admin Token" placeholder="Admin Token:"
-                class="input[type='text'] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5"
-                type="password" id="token" name="token" />
+            <input id='tokenInput' aria-label='Admin Token' placeholder='Admin Token:'
+                class='input[type="text"] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5'
+                type='password' id='token' name='token' />
 
-            <input id="emailInput" aria-label="Email:" placeholder="Email:"
-                class="input[type='text'] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5"
-                type="text" id="email" name="email" />
+            <input id='emailInput' aria-label='Email:' placeholder='Email:'
+                class='input[type="text"] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5'
+                type='text' id='email' name='email' />
 
-            <input id="pwdInput" aria-label="Password:" placeholder="Password:"
-                class="input[type='text'] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5"
-                type="password" id="pwd" name="pwd" />
+            <input id='pwdInput' aria-label='Password:' placeholder='Password:'
+                class='input[type="text"] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5'
+                type='password' id='pwd' name='pwd' />
 
-            <button id="loginBtn" class="mt-5 text-3xl bg-slate-600 h-14 w-full text-white rounded-lg" type="button" id="loginBtn">
+            <button id='loginBtn' class='mt-5 text-3xl bg-slate-600 h-14 w-full text-white rounded-lg' type='button' id='loginBtn'>
                 Login
             </button>
 

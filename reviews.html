@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>Reviews</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>AmpNado</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='https://cdn.tailwindcss.com'></script>
     <script>
         tailwind.config = {
             theme: {
@@ -22,61 +22,43 @@
             },
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="js/jquery.cookie.js"></script>
-    
+    <script src='https://code.jquery.com/jquery-3.6.4.min.js'
+        integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
+    <script src='/js/jquery.cookie.js'></script>
+    <script src='/js/initreviews.js'></script>
+
 </head>
 
 <body class="flex flex-col items-center justify-center bg-black">
     <main>
-        <h1 class="text-white">Reviews</h1>
-        <!-- <div
-            className="grid xsm:grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xsm:w-full bg-sky-500 p-4 border-2 border-red-800 rounded-lg m-2">
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Vids:</p>
-                <p className="text-black m-1">{count.Vids}</p>
-            </div>
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Photos:</p>
-                <p className="text-black m-1">{count.Photos}</p>
-            </div>
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Admins:</p>
-                <p className="text-black m-1">{count.Admin}</p>
-            </div>
+        <div>
+            <a href="/admin.html"><button
+                    class="mt-5 mb-2 bg-blue-500 p-4 rounded-lg text-black">back</button></a>
+            <h1 class="mt-5 mb-5 text-center text-5xl text-lime-600">Reviews</h1>
+            <div id="revDiv"
+                class="mx-auto block box-content h-fit w-fit xxsm:p-px p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-600 italic">
+                <h2 id='rev_email' class='text-center'></h2>
+                <h5>Review:</h5>
+                <p id="revReview"
+                    class='h-fit xxsm:text-base xsm:text-lg text-xl italic my-5 mx-6 bg-sky-600 text-black px-1 py-1 rounded-lg'>
+                </p>
+                <div class='flex flex-row'>
+                    <p class='text-black text-lg'>Name: </p>
+                    <p id="name" class='ml-2 text-black text-lg'></p>
+                </div>
+                <div class='flex flex-row'>
+                    <p class='text-black text-lg'>Rating: </p>
+                    <p id='rating' class='ml-2 text-black text-lg'></p>
+                </div>
 
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Estimates:</p>
-                <p className="text-black m-1">{count.Estimates}</p>
-            </div>
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Completed:</p>
-                <p className="text-black m-1">{count.Esticompleted}</p>
-            </div>
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Working:</p>
-                <p className="text-red-500 m-1">{count.Estiworking}</p>
-            </div>
+                <p id='dateandtime' class='text-black text-lg'></p>
+                <button id='acceptBtn' class='mt-5 ml-1 mb-2 p-3 bg-black rounded-lg text-green-500'>accept</button>
+                <button id='rejectBtn'
+                    class='mt-5 mr-1 mb-2 p-3 float-right bg-black rounded-lg text-red-500'>reject</button>
 
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Reviews:</p>
-                <p className="text-black m-1">{count.Revs}</p>
-            </div>
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Accepted:</p>
-                <p className="text-black m-1">{count.Revsaccepted}</p>
-            </div>
+                <br />
 
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Rejected:</p>
-                <p className="text-black m-1">{count.Revsrejected}</p>
             </div>
-            <div className="flex flex-row m-2">
-                <p className="text-black m-1">Jailed:</p>
-                <p className="text-red-500 m-1">{count.Revsjailed}</p>
-            </div>
-        </div> -->
     </main>
 </body>
 

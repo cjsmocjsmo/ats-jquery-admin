@@ -24,14 +24,68 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="js/jquery.cookie.js"></script>
-    
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/initestimates.js"></script>
+    <script src="/js/estimates.js"></script>
+
 </head>
 
-<body class="flex flex-col items-center justify-center bg-black">
+<body class='flex flex-col items-center justify-center bg-black'>
     <main>
-        <h1 class="text-white">Estimates</h1>
+        <div>
+            <a href="/admin.html"><button class="mt-5 mb-2 bg-blue-500 p-4 rounded-lg text-black">back</button></a>
+            <h1 class="mt-5 mb-5 text-center text-5xl text-lime-600">Estimates</h1>
+            <div id="estDiv"
+                class="mx-auto block box-content h-fit w-fit xxsm:p-px p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-500 italic">
+
+                <h2 id='name' class='mt-5 mb-5 text-center text-3xl text-black'></h2>"
+
+                <div class='flex flex-row flex-wrap'>
+                    <div class='flex flex-row'>
+                        <h5 class='text-black m-2'>Phone:</h5>
+                        <p id='telephone' class='m-2 text-blue-900'></p>
+                    </div>
+                    <div class='flex flex-row'>
+                        <h5 class='text-black m-2'>Email:</h5>
+                        <p id='email' class='m-2'></p>
+                    </div>
+                    <div class='flex flex-row'>
+                        <h5 class='text-black m-2'>Address:</h5>
+                        <p id="address" class='text-black m-2'></p>
+                    </div>
+                    <div class='flex flex-row'>
+                        <h5 class='text-black m-2'>City:</h5>
+                        <p id='city' class='text-black m-2'></p>
+                    </div>
+                </div>
+                <div class='flex flex-row flex-wrap'>
+                    <div class='flex flex-row'>
+                        <h5 class='text-black m-2'>Requested Service Date:</h5>
+                        <p id='reqServDate' class='text-black m-2'></p>
+                    </div>
+                    <div class='flex flex-row'>
+                        <h5 class='text-black m-2'>Date:</h5>
+                        <p id='date' class='text-black m-2'></p>
+                    </div>
+                </div>
+                <h5 class='text-black m-2'>Comment:</h5>
+                <p id='comment' class='text-black mt-2 ml-8'></p>
+                <hr class='mt-10 border-t-4 border-amber-500 border-solid rounded-lg' />
+                <img id='image' class='mx-auto mt-10 rounded-lg' width='300' height='531' alt='User Submitted Photo' src=""  />
+
+
+
+
+
+                <button id='estBtn' class='mt-5 mr-1 mb-2 p-3 bg-black rounded-lg text-green-500'>
+                    completed
+                </button>
+                <br />
+            </div>
+        </div>
     </main>
 </body>
+
+
 
 </html>
