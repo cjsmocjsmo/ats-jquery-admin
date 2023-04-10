@@ -1,8 +1,4 @@
 FROM httpd:2-alpine
-RUN \
-    mkdir /usr/local/apache2/htdocs/js
-
-COPY js/*.js /usr/local/apache2/htdocs/js/
 
 WORKDIR /usr/local/apache2/htdocs
 
