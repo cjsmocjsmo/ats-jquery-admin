@@ -2,90 +2,179 @@
 <html>
 
 <head>
-    <title>AmpNado</title>
+    <title>ATS</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                screens: {
-                    '2xs': '375px',
-                    'xs': '412px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                    '2xl': '1536px',
-                },
-                extend: {},
-            },
-        }
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="/jquery.cookie.js"></script>
-    <script src="/initestimates.js"></script>
     <script src="/estimates.js"></script>
+    <script src="/common.js"></script>
+    <style>
+        .estBody {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        .estBackBtn {
+            margin-top: 2em;
+            margin-bottom: .5em;
+            padding: 1em;
+            background-color: rgb(121, 208, 235);
+            border-style: solid;
+            border-color: black;
+            border-radius: 8px;
+            color: black;
+        }
+        
+        .estDiv {
+            display: block;
+            box-sizing: content-box;
+            height: fit-content;
+            width: fit-content;
+            padding: 16px;
+            border-style: solid;
+            border-width: 4px;
+            border-color: red;
+            border-radius: 8px;
+            background-color: rgb(121, 208, 235);
+            font-style: italic;
+        }
+
+        .estTitle {
+            margin-top: .5em;
+            margin-bottom: 1em;
+            text-align: center;
+            font-size: 50px;
+            color: rgb(20, 155, 20);
+        }
+
+        .estName {
+            margin-top: 1em;
+            margin-bottom: 1em;
+            text-align: center;
+            font-size: x-large;
+            color: black;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .cardItem {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cardText {
+            margin: 1em;
+            color: black;
+        }
+
+        .commentText {
+            margin-top: 1.5em;
+            margin-left: 2.5em;
+            color: black;
+        }
+        
+        .estLine {
+            margin-top: 2.5em;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgb(182, 182, 47);
+            border-radius: 2px;
+            height: 6px;
+            width: 50%;
+        }
+        
+        .estImage {
+            margin-top: 2.5em;
+            border-radius: 8px;
+            width: 300px;
+            height: 531px;
+        }
+        
+        .estCompletedBtn {
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            padding: 12px;
+            background-color: black;
+            border-style: solid;
+            border-color: black;
+            border-radius: 8px;
+            color:rgb(20, 155, 20)
+        }
+    </style>
 
 </head>
 
-<body class='flex flex-col items-center justify-center bg-black'>
+<body class='estBody'>
     <main>
         <div>
-            <a href="/admin.html"><button class="mt-5 mb-2 bg-blue-500 p-4 rounded-lg text-black">back</button></a>
-            <h1 class="mt-5 mb-5 text-center text-5xl text-lime-600">Estimates</h1>
-            <div id="estDiv"
-                class="mx-auto block box-content h-fit w-fit xxsm:p-px p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-500 italic">
+            <a href="/admin.html"><button class="estBackBtn">back</button></a>
 
-                <h2 id='name' class='mt-5 mb-5 text-center text-3xl text-black'></h2>"
+            <h1 class="estTitle">Estimates</h1>
 
-                <div class='flex flex-row flex-wrap'>
-                    <div class='flex flex-row'>
-                        <h5 class='text-black m-2'>Phone:</h5>
-                        <p id='telephone' class='m-2 text-blue-900'></p>
+            <div id="estDiv" data-idx=""
+                class="estDiv">
+
+                <h2 id='name' class='estName'></h2>
+
+                <div class='card'>
+                    <div class='cardItem'>
+                        <h5 class='cardText'>Phone:</h5>
+                        <p id='telephone' class='cardText'></p>
                     </div>
-                    <div class='flex flex-row'>
-                        <h5 class='text-black m-2'>Email:</h5>
-                        <p id='email' class='m-2'></p>
+                    <div class='cardItem'>
+                        <h5 class='cardText'>Email:</h5>
+                        <p id='email' class='cardText'></p>
                     </div>
-                    <div class='flex flex-row'>
-                        <h5 class='text-black m-2'>Address:</h5>
-                        <p id="address" class='text-black m-2'></p>
+                    <div class='cardItem'>
+                        <h5 class='cardText'>Address:</h5>
+                        <p id="address" class='cardText'></p>
                     </div>
-                    <div class='flex flex-row'>
-                        <h5 class='text-black m-2'>City:</h5>
-                        <p id='city' class='text-black m-2'></p>
-                    </div>
-                </div>
-                <div class='flex flex-row flex-wrap'>
-                    <div class='flex flex-row'>
-                        <h5 class='text-black m-2'>Requested Service Date:</h5>
-                        <p id='reqServDate' class='text-black m-2'></p>
-                    </div>
-                    <div class='flex flex-row'>
-                        <h5 class='text-black m-2'>Date:</h5>
-                        <p id='date' class='text-black m-2'></p>
+                    <div class='cardItem'>
+                        <h5 class='cardText'>City:</h5>
+                        <p id='city' class='cardText'></p>
                     </div>
                 </div>
-                <h5 class='text-black m-2'>Comment:</h5>
-                <p id='comment' class='text-black mt-2 ml-8'></p>
-                <hr class='mt-10 border-t-4 border-amber-500 border-solid rounded-lg' />
-                <img id='image' class='mx-auto mt-10 rounded-lg' width='300' height='531' alt='User Submitted Photo' src=""  />
+                <div class='card'>
+                    <div class='cardItem'>
+                        <h5 class='cardText'>Recieved:</h5>
+                        <p id='date' class='cardText'></p>
+                    </div>
+                    <div class='cardItem'>
+                        <h5 class='cardText'>Requested Service Date:</h5>
+                        <p id='reqServDate' class='cardText'></p>
+                    </div>
+                </div>
 
+                <h5 class='cardText'>Comment:</h5>
+                <p id='comment' class='commentText'></p>
 
+                <hr class='estLine' />
 
-
-
-                <button id='estBtn' class='mt-5 mr-1 mb-2 p-3 bg-black rounded-lg text-green-500'>
+                <div style="text-align: center;">
+                     <img id='image' class='estImage' alt='User Submitted Photo' src="" />
+                </div>
+               
+                <br />
+                
+                <button id='estBtn' class='estCompletedBtn'>
                     completed
                 </button>
+
                 <br />
             </div>
         </div>
     </main>
 </body>
-
-
 
 </html>

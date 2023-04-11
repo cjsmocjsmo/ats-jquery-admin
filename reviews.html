@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>AmpNado</title>
+    <title>ATS</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <script src='https://cdn.tailwindcss.com'></script>
@@ -25,30 +26,110 @@
     <script src='https://code.jquery.com/jquery-3.6.4.min.js'
         integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
     <script src='/jquery.cookie.js'></script>
-    <script src='/initreviews.js'></script>
+    <script src='/reviews.js'></script>
+    <script src='/common.js'></script>
+    <style>
+        .revBody {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        .revBackBtn {
+            margin-top: 2em;
+            margin-bottom: .5em;
+            padding: 1em;
+            background-color: rgb(121, 208, 235);
+            border-style: solid;
+            border-color: black;
+            border-radius: 8px;
+            color: black;
+        }
+
+        .revTitle {
+            margin-top: .5em;
+            margin-bottom: 1em;
+            text-align: center;
+            font-size: 50px;
+            color: rgb(20, 155, 20);
+        }
+
+        .revDiv {
+            display: block;
+            box-sizing: content-box;
+            height: fit-content;
+            width: fit-content;
+            padding: 16px;
+            border-style: solid;
+            border-width: 4px;
+            border-color: red;
+            border-radius: 8px;
+            background-color: rgb(121, 208, 235);
+            font-style: italic;
+        }
+
+        .revEmail{
+            margin-top: 1em;
+            margin-bottom: 1em;
+            text-align: center;
+            font-size: 50px;
+        }
+        /* "h-fit xxsm:text-base xsm:text-lg text-xl italic my-5 mx-6 bg-sky-600 text-black px-1 py-1 rounded-lg" */
+        .revReview {
+            margin-left: 2.5em;
+            margin-right: 3em;
+            padding-left: .5em;
+            padding-right: .5em;
+            border-radius: 8px;
+            font-size: x-large;
+            font-style: italic;
+            background-color: rgb(121, 208, 235);
+            height: fit-content;
+        }
+
+        .cardItem {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cardTitle {
+            color: black;
+            font-size: large;
+        }
+
+        .cardText {
+            margin-left: 1em;
+            font-size: large;
+            color: black;
+        }
+    </style>
 
 </head>
 
-<body class="flex flex-col items-center justify-center bg-black">
+<body class="revBody">
     <main>
         <div>
-            <a href="/admin.html"><button
-                    class="mt-5 mb-2 bg-blue-500 p-4 rounded-lg text-black">back</button></a>
-            <h1 class="mt-5 mb-5 text-center text-5xl text-lime-600">Reviews</h1>
-            <div id="revDiv"
-                class="mx-auto block box-content h-fit w-fit xxsm:p-px p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-600 italic">
-                <h2 id='rev_email' class='text-center'></h2>
+            <a href="/admin.html"><button class="revBackBtn">back</button></a>
+
+            <h1 class="revTitle">Reviews</h1>
+
+            <div id="revDiv" class="revDiv">
+                
+                <p id='rev_email' class='revemail'></p>
+
                 <h5>Review:</h5>
-                <p id="revReview"
-                    class='h-fit xxsm:text-base xsm:text-lg text-xl italic my-5 mx-6 bg-sky-600 text-black px-1 py-1 rounded-lg'>
-                </p>
-                <div class='flex flex-row'>
-                    <p class='text-black text-lg'>Name: </p>
-                    <p id="name" class='ml-2 text-black text-lg'></p>
+
+                <p id="revReview" class='revReview'></p>
+
+                <div class='cardItem'>
+                    <p class='cardTitle'>Name: </p>
+                    <p id="name" class='cardText'></p>
                 </div>
-                <div class='flex flex-row'>
-                    <p class='text-black text-lg'>Rating: </p>
-                    <p id='rating' class='ml-2 text-black text-lg'></p>
+                <div class='cardItem'>
+                    <p class='cardTitle'>Rating: </p>
+                    <p id='rating' class='cardText'></p>
                 </div>
 
                 <p id='dateandtime' class='text-black text-lg'></p>
