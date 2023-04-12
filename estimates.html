@@ -3,14 +3,9 @@
 
 <head>
     <title>ATS</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="/jquery.cookie.js"></script>
-    <script src="/estimates.js"></script>
-    <script src="/common.js"></script>
+    <link rel='icon' type='image/x-icon' href='/favicon.ico'>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <style>
         .estBody {
             display: flex;
@@ -112,73 +107,82 @@
             color: rgb(20, 155, 20)
         }
     </style>
+    <script src='https://code.jquery.com/jquery-3.6.4.min.js'
+        integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
+    <script src='/jquery.cookie.js'></script>
+    <script>
+        var SERVER_ADDR = "http://192.168.0.91:8080"
+        // var SERVER_ADDR = "https://atsdo.xyz"
 
+        function estName(id, name) {
+            var en = "<div id='" + id + "'class='estDiv'>";
+            var en2 = "<h2 id='name' class='estName'>" + name + "</h2>";
+            var en3 = en + en2;
+            return en3
+        }
+
+        function estCard1(telephone, email, address, city) {
+            var ec = "<div class='card'><div class='cardItem'><h5 class='cardText'>Phone:</h5>";
+            var ec2 = "<p id='telephone' class='cardText'>" + telephone + "</p></div>";
+            var ec3 = "<div class='cardItem'><h5 class='cardText'>Email:</h5>";
+            var ec4 = "<p id='email' class='cardText'>" + email + "</p></div>";
+            var ec5 = "<div class='cardItem'><h5 class='cardText'>Address:</h5>";
+            var ec6 = "<p id='address' class='cardText'>" + address + "</p></div>";
+            var ec7 = "<div class='cardItem'><h5 class='cardText'>City:</h5>";
+            var ec8 = "<p id='city' class='cardText'>" + city + "</p></div></div>";
+            var ec9 = ec + ec2 + ec3 + ec4 + ec5 + ec6 + ec7 + ec8;
+            return ec9
+        }
+
+        function estCard2(date, reqservdate) {
+            var e1 = "<div class='card'><div class='cardItem'><h5 class='cardText'>Recieved:</h5>";
+            var e2 = "<p id='date' class='cardText'>" + date + "</p></div>";
+            var e3 = "<div class='cardItem'><h5 class='cardText'>Requested Service Date:</h5>";
+            var e4 = "<p id='reqServDate' class='cardText'>" + reqservdate + "</p></div></div>";
+            var e5 = e1 + e2 + e3 + e4;
+            return e5
+        }
+
+        function theRest(comment, photo) {
+            var tr = "<h5 class='cardText'>Comment:</h5><p id='comment' class='commentText'>" + comment + "</p>";
+            var tr2 = "<hr class='estLine' /><div style='text-align: center;'>";
+            var tr3 = "<img id='image' class='estImage' alt='User Submitted Photo' src='" + photo + "' /></div><br />";
+            var tr4 = "<button id='estBtn' class='estCompletedBtn'>completed</button><br /></div>";
+            var tr5 = tr + tr2 + tr3 + tr4;
+            return tr5
+        }
+
+        function getEstimats() {
+            url = SERVER_ADDR + "/all_est";
+            $.get(url, {}, function (data) {
+                $.each(data, function (key, val) {
+                    var DandT = val.date + " at " + val.time;
+                    var z1 = estName(val.id, val.name);
+                    var z2 = estCard1(val.telephone, val.email, val.address, val.city);
+                    var z3 = estCard2(DandT, val.reqservdate);
+                    var z4 = theRest(val.comment, val.photo);
+                    var z5 = z1 + z2 + z3 + z4;
+                    $('#estDiv').append(z5);
+                })
+            })
+        };
+
+        $(window).load(getEstimats())
+    </script>
 </head>
 
 <body class='estBody'>
     <main>
-        <div>
-            <a href="/admin.html"><button class="estBackBtn">back</button></a>
-
-            <h1 class="estTitle">Estimates</h1>
-
-            <div id="estDiv" data-idx="" class="estDiv">
-
-                <h2 id='name' class='estName'></h2>
-
-                <div class='card'>
-                    <div class='cardItem'>
-                        <h5 class='cardText'>Phone:</h5>
-                        <p id='telephone' class='cardText'></p>
-                    </div>
-                    <div class='cardItem'>
-                        <h5 class='cardText'>Email:</h5>
-                        <p id='email' class='cardText'></p>
-                    </div>
-                    <div class='cardItem'>
-                        <h5 class='cardText'>Address:</h5>
-                        <p id="address" class='cardText'></p>
-                    </div>
-                    <div class='cardItem'>
-                        <h5 class='cardText'>City:</h5>
-                        <p id='city' class='cardText'></p>
-                    </div>
-                </div>
-                <div class='card'>
-                    <div class='cardItem'>
-                        <h5 class='cardText'>Recieved:</h5>
-                        <p id='date' class='cardText'></p>
-                    </div>
-                    <div class='cardItem'>
-                        <h5 class='cardText'>Requested Service Date:</h5>
-                        <p id='reqServDate' class='cardText'></p>
-                    </div>
-                </div>
-
-                <h5 class='cardText'>Comment:</h5>
-                <p id='comment' class='commentText'></p>
-
-                <hr class='estLine' />
-
-                <div style="text-align: center;">
-                    <img id='image' class='estImage' alt='User Submitted Photo' src="" />
-                </div>
-
-                <br />
-
-                <button id='estBtn' class='estCompletedBtn'>
-                    completed
-                </button>
-
-                <br />
-            </div>
+        <div id='estDiv'>
+            <a href='/admin.html'><button class='estBackBtn'>back</button></a>
+            <h1 class='estTitle'>Estimates</h1>
         </div>
     </main>
 
     <script>
         $('#estBtn').click(function () {
-            var id = $('#estDiv').attr("data-id");
-            console.log("esti has been clicked")
+            var id = $('#estDiv').attr('data-id');
+            console.log('esti has been clicked')
         });
     </script>
 </body>

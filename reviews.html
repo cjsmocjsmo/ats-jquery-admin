@@ -3,7 +3,7 @@
 
 <head>
     <title>ATS</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel='icon' type='image/x-icon' href='/favicon.ico'>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <style>
@@ -55,7 +55,6 @@
             font-size: 50px;
         }
 
-        /* "h-fit xxsm:text-base xsm:text-lg text-xl italic my-5 mx-6 bg-sky-600 text-black px-1 py-1 rounded-lg" */
         .revReview {
             margin-left: 2.5em;
             margin-right: 3em;
@@ -89,7 +88,6 @@
             font-size: 14px;
         }
 
-        /* mt-5 ml-1 mb-2 p-3 bg-black rounded-lg text-green-500 */
         .revAcceptBtn {
             margin-top: 2.5em;
             margin-left: .5em;
@@ -103,7 +101,6 @@
 
         }
 
-        /* mt-5 mr-1 mb-2 p-3 float-right bg-black rounded-lg text-red-500 */
         .revRejectedBtn {
             margin-top: 2.5em;
             margin-right: .5em;
@@ -120,32 +117,75 @@
     <script src='https://code.jquery.com/jquery-3.6.4.min.js'
         integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
     <script src='/jquery.cookie.js'></script>
-    <script src='/reviews.js'></script>
-    <script src='/common.js'></script>
+    <!-- <script src='/reviews.js'></script> -->
+    <!-- <script src='/common.js'></script> -->
+    <script>
+        var SERVER_ADDR = "http://192.168.0.91:8080"
+        // var SERVER_ADDR = "https://atsdo.xyz"
+
+        function revReviewStart(id, email, review) {
+            var rs = "<div id='" + id + "' class='revDiv'>";
+            var rs2 = "<div style='text-align: center;'>";
+            var rs3 = "<p id='rev_email' class='revemail'>" + email + "</p></div>";
+            var rs4 = "<h5>Review:</h5><p id='revReview' class='revReview'>" + review + "</p>";
+            var rs5 = rs + rs2 + rs3 + rs4;
+            return rs5
+        }
+
+        function revReviewsLast(name, rating, datetime) {
+            var rl = "<div class='revCardItem'><p class='revCardTitle'>Name: </p>";
+            var rl1 = "<p id='name' class='revCardText'>" + name + "</p></div>";
+            var rl2 = "<div class='revCardItem'><p class='revCardTitle'>Rating: </p>";
+            var rl3 = "<p id='rating' class='revCardText'>" + rating + "</p></div>";
+            var rl4 = "<p id='dateandtime' class='revDateTime'>" + datetime + "</p>";
+            var rl5 = "<button id='acceptBtn' class='revAcceptBtn'>accept</button>";
+            var rl6 = "<button id='rejectBtn' class='revRejectedBtn'>reject</button><br />";
+            var rl7 = rl + rl1 + rl2 + rl3 + rl4 + rl5 + rl6;
+            return rl7
+        }
+
+        function getReviews() {
+            url = SERVER_ADDR + "/all_jailed";
+            $.get(url, {}, function (data) {
+                $.each(data, function (k, v) {
+                    console.log(v.email);
+                    newstr = "Date: " + v.date + " at " + v.time;
+                    var y1 = revReviewStart(v.id, v.email, v.review);
+                    var y2 = revReviewsLast(v.name, v.rating, newstr);
+                    var y3 = y1 + y2;
+                    console.log(y3)
+                    $('#revDevApp').append(y3);
+                })
+            })
+        }
+
+        $(window).load(getReviews())
+
+    </script>
 
 
 </head>
 
-<body class="revBody">
+<body class='revBody'>
     <main>
-        <div>
-            <a href="/admin.html"><button class="revBackBtn">back</button></a>
+        <div id='revDevApp'>
+            <a href='/admin.html'><button class='revBackBtn'>back</button></a>
 
-            <h1 class="revTitle">Reviews</h1>
+            <h1 class='revTitle'>Reviews</h1>
 
-            <div id="revDiv" class="revDiv">
+            <!-- <div id='' class='revDiv'>
 
-                <div style="text-align: center;">
+                <div style='text-align: center;'>
                     <p id='rev_email' class='revemail'></p>
                 </div>
 
                 <h5>Review:</h5>
 
-                <p id="revReview" class='revReview'></p>
+                <p id='revReview' class='revReview'></p> -->
 
-                <div class='revCardItem'>
+            <!-- <div class='revCardItem'>
                     <p class='revCardTitle'>Name: </p>
-                    <p id="name" class='revCardText'></p>
+                    <p id='name' class='revCardText'></p>
                 </div>
                 <div class='revCardItem'>
                     <p class='revCardTitle'>Rating: </p>
@@ -158,16 +198,16 @@
 
                 <button id='rejectBtn' class='revRejectedBtn'>reject</button>
 
-                <br />
+                <br /> -->
 
-            </div>
+        </div>
     </main>
     <script>
         $('#acceptBtn').click(function () {
-            console.log("accept btn has benn clicked")
+            console.log('accept btn has benn clicked')
         })
         $('#rejectBtn').click(function () {
-            console.log("reject btn has benn clicked")
+            console.log('reject btn has benn clicked')
         });
     </script>
 </body>

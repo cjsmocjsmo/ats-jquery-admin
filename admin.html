@@ -6,28 +6,6 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <!-- <script src='https://cdn.tailwindcss.com'></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                screens: {
-                    '2xs': '375px',
-                    'xs': '412px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                    '2xl': '1536px',
-                },
-                extend: {},
-            },
-        }
-    </script> -->
-    <script src='https://code.jquery.com/jquery-3.6.4.min.js'
-        integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
-    <script src='/jquery.cookie.js'></script>
-    <script src='/admin.js'></script>
-    <script src='/common.js'></script>
     <style>
         .adminBody {
             display: flex;
@@ -41,7 +19,6 @@
             margin-top: 2.5em;
         }
 
-        /* 'mx-auto block box-content h-fit w-40 p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-500 italic' */
         .adminCard {
             display: block;
             box-sizing: border-box;
@@ -54,20 +31,8 @@
             border-radius: 8px;
             background-color: rgb(121, 208, 235);
             width: 50%;
-
-
-
-
         }
 
-        /* 'text-white text-3xl m-5' */
-        /* .adminCardText {
-            margin-left: auto;
-            margin-right: auto;
-            color: black;
-            font-size: 32px;
-            margin: 2.5em;
-        } */
         .adminCardText {
             margin: 2.5em;
             font-size: 24px;
@@ -75,9 +40,6 @@
             color: black;
         }
 
-        
-
-        /* grid xsm:grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xsm:w-full bg-sky-500 p-4 border-2 border-red-800 rounded-lg m-2' */
         .statDiv {
             display: grid;
             margin: 2em;
@@ -89,16 +51,8 @@
             border-color: red;
             border-radius: 8px;
             background-color: rgb(121, 208, 235);
-
-            /* need to add break points */
-
         }
 
-        /* @media only screen and (min-width: 768px) and (max-width: 959px){
-
-        } */
-
-        /* 'flex flex-row m-2' */
         .statCard {
             display: flex;
             flex-direction: row;
@@ -109,7 +63,7 @@
             margin: 0.5em;
             color: black;
         }
-        
+
         @media only screen and (min-width: 360px) and (max-width: 600px) {
             .adminCardText {
                 margin: 2.5em;
@@ -133,6 +87,36 @@
         }
     </style>
 
+    <script src='https://code.jquery.com/jquery-3.6.4.min.js'
+        integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
+    <script src='/jquery.cookie.js'></script>
+
+    <script>
+        var SERVER_ADDR = 'http://192.168.0.91:8080'
+        // var SERVER_ADDR = 'https://atsdo.xyz'
+
+        function getCounts() {
+            var url = SERVER_ADDR + '/counts'
+            $.get(url, {
+            },
+                function (data) {
+                    console.log(data);
+                    $('#vidStats').text(data.Vids);
+                    $('#photoStats').text(data.Photos);
+                    $('#adminStats').text(data.Admin);
+                    $('#estStats').text(data.Estimates);
+                    $('#estCompStats').text(data.Esticompleted);
+                    $('#estWorkStats').text(data.Estiworking);
+                    $('#rev').text(data.Revs);
+                    $('#revAccStats').text(data.Revsaccepted);
+                    $('#revRejStats').text(data.Revsrejected);
+                    $('#revJailedStats').text(data.Revsjailed);
+                }
+            )
+        }
+
+        $(window).load(getCounts())
+    </script>
 </head>
 
 <body class='adminBody'>
@@ -156,7 +140,6 @@
                 </a>
             </button>
         </div>
-
 
         <div id='statsDiv' class='statDiv'>
             <div class='statCard'>
