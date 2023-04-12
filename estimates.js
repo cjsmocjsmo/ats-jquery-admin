@@ -20,6 +20,11 @@ function getEstimats() {
     })
 };
 
+// $('#estBtn').click( function () {
+//     var id = $('#estDiv').attr("data-id");
+//     console.log("esti has been clicked")
+// });
+
 $(window).load(getEstimats())
 
 

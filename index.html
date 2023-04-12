@@ -6,56 +6,91 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                screens: {
-                    '2xs': '375px',
-                    'xs': '412px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                    '2xl': '1536px',
-                },
-                extend: {},
-            },
+    <style>
+        body {
+            background-color: black;
         }
-    </script>
+
+        /* 'h-screen flex flex-col items-center justify-center mr-3 ml-3' */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 3em;
+            margin-right: 3em;
+            height: 100vh;
+        }
+
+        /* 'mt-10 mb-10 text-center text-white text-5xl' */
+        .idxh1 {
+            margin-top: .5em;
+            margin-bottom: .5em;
+            text-align: center;
+            color: white;
+            font-size: 60px;
+        }
+
+        .idxForm {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .idxInput {
+            font-size: xx-large;
+            color: whitesmoke;
+            background-color: slategrey;
+            border-color: red;
+            border-radius: 8px;
+            height: 50px;
+            margin-top: 1em;
+
+        }
+
+        /* 'mt-5 text-3xl bg-slate-600 h-14 w-full text-white rounded-lg' */
+        .idxBtn {
+            margin-top: 2.5em;
+            font-size: xx-large;
+            background-color: slategrey;
+            height: 60px;
+            width: 100%;
+            color: black;
+            border-radius: 8px;
+            border-color: blue;
+
+        }
+    </style>
     <script src='https://code.jquery.com/jquery-3.6.4.min.js'
         integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
     <script src='/jquery.cookie.js'></script>
     <script src='/idx.js'></script>
-    <script src='/common.js'></script>
-    
+    <!-- <script src='/common.js'></script> -->
+
 </head>
 
-<body class='bg-black'></body>
-    <main class='h-screen flex flex-col items-center justify-center mr-3 ml-3'>
+<body class='idxBody'></body>
+<main>
 
-        <h1 class='mt-10 mb-10 text-center text-white text-5xl'>Admin LogIn</h1>
-        <form class='mx-auto' method='get'>
+    <h1 class="idxh1">Admin LogIn</h1>
+    <form class='idxForm' method='get'>
 
-            <input id='tokenInput' aria-label='Admin Token' placeholder='Admin Token:'
-                class='input[type="text"] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5'
-                type='password' id='token' name='token' />
+        <input id='tokenInput' aria-label='Admin Token' placeholder='Admin Token:' class='idxInput' type='password'
+            id='token' name='token' />
 
-            <input id='emailInput' aria-label='Email:' placeholder='Email:'
-                class='input[type="text"] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5'
-                type='text' id='email' name='email' />
+        <input id='emailInput' aria-label='Email:' placeholder='Email:' class='idxInput' type='text' id='email'
+            name='email' />
 
-            <input id='pwdInput' aria-label='Password:' placeholder='Password:'
-                class='input[type="text"] sm:text-xl md:text-2xl text-white bg-slate-600 rounded-lg h-10 w-full mt-5'
-                type='password' id='pwd' name='pwd' />
+        <input id='pwdInput' aria-label='Password:' placeholder='Password:' class='idxInput' type='password' id='pwd'
+            name='pwd' />
 
-            <button id='loginBtn' class='mt-5 text-3xl bg-slate-600 h-14 w-full text-white rounded-lg' type='button' id='loginBtn'>
-                Login
-            </button>
+        <button id='loginBtn' class='idxBtn'>
+            Login
+        </button>
 
-        </form>
-        
-    </main>
+    </form>
+
+</main>
 </body>
 
 </html>

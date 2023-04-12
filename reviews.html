@@ -6,28 +6,6 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <script src='https://cdn.tailwindcss.com'></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                screens: {
-                    '2xs': '375px',
-                    'xs': '412px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                    '2xl': '1536px',
-                },
-                extend: {},
-            },
-        }
-    </script>
-    <script src='https://code.jquery.com/jquery-3.6.4.min.js'
-        integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
-    <script src='/jquery.cookie.js'></script>
-    <script src='/reviews.js'></script>
-    <script src='/common.js'></script>
     <style>
         .revBody {
             display: flex;
@@ -70,12 +48,13 @@
             font-style: italic;
         }
 
-        .revEmail{
+        .revEmail {
             margin-top: 1em;
             margin-bottom: 1em;
             text-align: center;
             font-size: 50px;
         }
+
         /* "h-fit xxsm:text-base xsm:text-lg text-xl italic my-5 mx-6 bg-sky-600 text-black px-1 py-1 rounded-lg" */
         .revReview {
             margin-left: 2.5em;
@@ -89,22 +68,61 @@
             height: fit-content;
         }
 
-        .cardItem {
+        .revCardItem {
             display: flex;
             flex-direction: row;
         }
 
-        .cardTitle {
+        .revCardTitle {
             color: black;
             font-size: large;
         }
 
-        .cardText {
+        .revCardText {
             margin-left: 1em;
             font-size: large;
             color: black;
         }
+
+        .revDateTime {
+            color: black;
+            font-size: 14px;
+        }
+
+        /* mt-5 ml-1 mb-2 p-3 bg-black rounded-lg text-green-500 */
+        .revAcceptBtn {
+            margin-top: 2.5em;
+            margin-left: .5em;
+            margin-bottom: 1em;
+            padding: 12px;
+            background-color: black;
+            border-style: solid;
+            border-color: black;
+            border-radius: 8px;
+            color: rgb(20, 155, 20);
+
+        }
+
+        /* mt-5 mr-1 mb-2 p-3 float-right bg-black rounded-lg text-red-500 */
+        .revRejectedBtn {
+            margin-top: 2.5em;
+            margin-right: .5em;
+            margin-bottom: 1.5em;
+            padding: 12px;
+            float: right;
+            border-style: solid;
+            border-color: black;
+            border-radius: 8px;
+            background-color: black;
+            color: red;
+        }
     </style>
+    <script src='https://code.jquery.com/jquery-3.6.4.min.js'
+        integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
+    <script src='/jquery.cookie.js'></script>
+    <script src='/reviews.js'></script>
+    <script src='/common.js'></script>
+
 
 </head>
 
@@ -116,31 +134,42 @@
             <h1 class="revTitle">Reviews</h1>
 
             <div id="revDiv" class="revDiv">
-                
-                <p id='rev_email' class='revemail'></p>
+
+                <div style="text-align: center;">
+                    <p id='rev_email' class='revemail'></p>
+                </div>
 
                 <h5>Review:</h5>
 
                 <p id="revReview" class='revReview'></p>
 
-                <div class='cardItem'>
-                    <p class='cardTitle'>Name: </p>
-                    <p id="name" class='cardText'></p>
+                <div class='revCardItem'>
+                    <p class='revCardTitle'>Name: </p>
+                    <p id="name" class='revCardText'></p>
                 </div>
-                <div class='cardItem'>
-                    <p class='cardTitle'>Rating: </p>
-                    <p id='rating' class='cardText'></p>
+                <div class='revCardItem'>
+                    <p class='revCardTitle'>Rating: </p>
+                    <p id='rating' class='revCardText'></p>
                 </div>
 
-                <p id='dateandtime' class='text-black text-lg'></p>
-                <button id='acceptBtn' class='mt-5 ml-1 mb-2 p-3 bg-black rounded-lg text-green-500'>accept</button>
-                <button id='rejectBtn'
-                    class='mt-5 mr-1 mb-2 p-3 float-right bg-black rounded-lg text-red-500'>reject</button>
+                <p id='dateandtime' class='revDateTime'></p>
+
+                <button id='acceptBtn' class='revAcceptBtn'>accept</button>
+
+                <button id='rejectBtn' class='revRejectedBtn'>reject</button>
 
                 <br />
 
             </div>
     </main>
+    <script>
+        $('#acceptBtn').click(function () {
+            console.log("accept btn has benn clicked")
+        })
+        $('#rejectBtn').click(function () {
+            console.log("reject btn has benn clicked")
+        });
+    </script>
 </body>
 
 </html>

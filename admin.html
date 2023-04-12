@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <script src='https://cdn.tailwindcss.com'></script>
+    <!-- <script src='https://cdn.tailwindcss.com'></script>
     <script>
         tailwind.config = {
             theme: {
@@ -22,90 +22,153 @@
                 extend: {},
             },
         }
-    </script>
+    </script> -->
     <script src='https://code.jquery.com/jquery-3.6.4.min.js'
         integrity='sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=' crossorigin='anonymous'></script>
     <script src='/jquery.cookie.js'></script>
     <script src='/admin.js'></script>
     <script src='/common.js'></script>
+    <style>
+        .adminBody {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        main {
+            margin-top: 2.5em;
+        }
+
+        /* 'mx-auto block box-content h-fit w-40 p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-500 italic' */
+        .adminCard {
+            display: block;
+            box-sizing: border-box;
+            margin-top: 4em;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: solid;
+            border-width: 3px;
+            border-color: red;
+            border-radius: 8px;
+            background-color: rgb(121, 208, 235);
+            width: 50%;
+
+
+
+
+        }
+
+        /* 'text-white text-3xl m-5' */
+        .adminCardText {
+            margin-left: auto;
+            margin-right: auto;
+            color: black;
+            font-size: 32px;
+            margin: 2.5em;
+        }
+        /* grid xsm:grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xsm:w-full bg-sky-500 p-4 border-2 border-red-800 rounded-lg m-2' */
+        .statDiv {
+            display: grid;
+            margin: 2em;
+            padding: 2em;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            background-color: rgb(121, 208, 235);
+            border-style: solid;
+            border-width: 3px;
+            border-color: red;
+            border-radius: 8px;
+            background-color: rgb(121, 208, 235);
+
+            /* need to add break points */
+
+        }
+        
+        /* 'flex flex-row m-2' */
+        .statCard {
+            display: flex;
+            flex-direction: row;
+            margin: 0.5em;
+        }
+
+        .statCardTitle {
+            margin: 0.5em;
+            color: black;
+        }
+    </style>
 
 </head>
 
-<body class='flex flex-col items-center justify-center bg-black'>
+<body class='adminBody'>
 
-    <main class="mt-5">
+    <main>
         <div>
-            <div
-                class='mx-auto block box-content h-fit w-40 p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-500 italic'>
+            <div class='adminCard'>
                 <a href='/estimates.html'>
-                    <h1 class='text-white text-3xl m-5'>Estimates</h1>
+                    <h1 class='adminCardText'>Estimates</h1>
                 </a>
             </div>
-            <div
-                class='mt-10 mx-auto block box-content h-fit w-40 p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-500 italic'>
+            <div class='adminCard'>
                 <a href='/reviews.html'>
-                    <h1 class='text-white text-3xl m-5'>Reviews</h1>
+                    <h1 class='adminCardText'>Reviews</h1>
                 </a>
             </div>
 
-            <a href='http://192.168.0.91:8080/dbbackup'>
-
-                <button
-                    class='mt-10 mx-auto block box-content h-fit w-40 p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-500 italic'>
-                    <h1 class='text-white text-2xl m-5'>Download Backups</h1>
-                </button>
-            </a>
-
+            <button class='adminCard'>
+                <a href='http://192.168.0.91:8080/dbbackup'>
+                    <h1 class='adminCardText'>Backup</h1>
+                </a>
+            </button>
         </div>
 
 
         <div id='statsDiv'
-            class='grid xsm:grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xsm:w-full bg-sky-500 p-4 border-2 border-red-800 rounded-lg m-2'>
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Vids:</p>
-                <p id='vidStats' class='text-black m-1'>0</p>
+            class='statDiv'>
+            <div class='statCard'>
+                <p class='statCardTitle'>Vids:</p>
+                <p id='vidStats' class='statCardTitle'></p>
             </div>
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Photos:</p>
-                <p id='photoStats' class='text-black m-1'>2</p>
+            <div class='statCard'>
+                <p class='statCardTitle'>Photos:</p>
+                <p id='photoStats' class='statCardTitle'></p>
             </div>
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Admins:</p>
-                <p id='adminStats' class='text-black m-1'>2</p>
-            </div>
-
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Estimates:</p>
-                <p id='estStats' class='text-black m-1'>1</p>
-            </div>
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Completed:</p>
-                <p id='estCompStats' class='text-black m-1'>3</p>
-            </div>
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Working:</p>
-                <p id='estWorkStats' class='text-black m-1'>1</p>
+            <div class='statCard'>
+                <p class='statCardTitle'>Admins:</p>
+                <p id='adminStats' class='statCardTitle'></p>
             </div>
 
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Reviews:</p>
-                <p id='rev' class='text-black m-1'>5</p>
+            <div class='statCard'>
+                <p class='statCardTitle'>Estimates:</p>
+                <p id='estStats' class='statCardTitle'></p>
             </div>
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Accepted:</p>
-                <p id='revAccStats' class='text-black m-1'>5</p>
+            <div class='statCard'>
+                <p class='statCardTitle'>Completed:</p>
+                <p id='estCompStats' class='statCardTitle'></p>
+            </div>
+            <div class='statCard'>
+                <p class='statCardTitle'>Working:</p>
+                <p id='estWorkStats' class='statCardTitle'></p>
             </div>
 
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Rejected:</p>
-                <p id='revRejStats' class='text-black m-1'>2</p>
+            <div class='statCard'>
+                <p class='statCardTitle'>Reviews:</p>
+                <p id='rev' class='statCardTitle'></p>
             </div>
-            <div class='flex flex-row m-2'>
-                <p class='text-black m-1'>Jailed:</p>
-                <p id='revJailedStats' class='text-black m-1'>3</p>
+            <div class='statCard'>
+                <p class='statCardTitle'>Accepted:</p>
+                <p id='revAccStats' class='statCardTitle'></p>
+            </div>
+
+            <div class='statCard'>
+                <p class='statCardTitle'>Rejected:</p>
+                <p id='revRejStats' class='statCardTitle'></p>
+            </div>
+            <div class='statCard'>
+                <p class='statCardTitle'>Jailed:</p>
+                <p id='revJailedStats' class='statCardTitle'></p>
             </div>
         </div>
-
     </main>
 </body>
 
