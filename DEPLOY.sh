@@ -9,6 +9,5 @@
 
 VERSION="gcr.io/atsgo-340504/ats-admin-jq364-httpd:0.0.1";
 
-npm run build;
 docker build -t $VERSION .;
 docker push $VERSION
