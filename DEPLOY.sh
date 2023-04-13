@@ -7,7 +7,7 @@
 
 ##################################################
 
-VERSION="gcr.io/atsgo-340504/ats-admin-jq364-httpd:0.0.1";
+VERSION="gcr.io/atsgo-340504/ats-admin-jq364-httpd:0.0.2";
 
 docker build -t $VERSION .;
 docker push $VERSION
