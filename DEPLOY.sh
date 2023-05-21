@@ -7,7 +7,7 @@
 
 ##################################################
 
-VERSION="us-central1-docker.pkg.dev/atsgo-340504/ats/ats-admin-jq364-httpd:0.0.3";
+VERSION="us-central1-docker.pkg.dev/atsgo-340504/ats-admin/ats-admin-jq364-httpd:0.0.4";
 
 docker build -t $VERSION .;
 docker push $VERSION
